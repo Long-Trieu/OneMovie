@@ -1,0 +1,34 @@
+﻿
+<div class="w3l_sign_in_register">
+    @{
+        var session = (MovieProject.Common.UserLogin)Session[MovieProject.Common.CommonContants.USER_SESSION];
+
+    }
+    @if (session == null)
+    {
+        <ul>
+            <li><a href="/dangnhap/">Đăng nhập</a></li>
+            <li><a href="/dangky/">Đăng ký</a></li>
+        </ul>
+    }
+    else
+    {
+
+        if (session.PermissonID == 0)
+        {
+            <i><a href="/Admin/Home/"><strong>Xin Chào:@session.UserName</strong></a></i>
+
+            <i>@Html.ActionLink("Đăng xuất", "Logout", "UserT")</i>
+        }
+        else
+        {
+            <i><strong>Xin Chào:@session.UserName</strong></i>
+
+            <i>@Html.ActionLink("Đăng xuất", "Logout", "UserT")</i>
+        }
+
+    }
+
+</div>
+
+<div class="clearfix"> </div>
